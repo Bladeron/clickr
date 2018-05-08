@@ -1,4 +1,4 @@
-<h1>Welcome to the Forums</h1>
+<h1>Welcome to ClikЯ</h1>
 <a [routerLink]="['/home']">Home</a>
 
 <div *ngIf="!service.user">
@@ -7,7 +7,9 @@
 </div>
 
 <div *ngIf="service.user">
+  <p>Usuario detectado: {{service.user.username}}</p>
   <a [routerLink]="['/threads/new']">New Thread</a>
+  <button class="btn btn-danger" (click)="service.logout().subscribe()" > Logout </button>
 </div>
 
 
