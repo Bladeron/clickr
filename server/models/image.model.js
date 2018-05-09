@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 
-const imageSchema = new Schema({
+const picSchema = new Schema({
   Owner: {
     type: Schema.Types.ObjectId,
     ref: 'User'
@@ -19,7 +19,7 @@ const imageSchema = new Schema({
     coordinates: [Number] },
 });
 
-imageSchema.index({ location: "2dsphere" });
+picSchema.index({ location: "2dsphere" });
 
-const Reply = mongoose.model('Image', imageSchema);
-module.exports = Image;
+const Reply = mongoose.model('Pic', picSchema);
+module.exports = Pic;

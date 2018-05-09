@@ -1,9 +1,9 @@
 const mongoose    = require('mongoose');
 const Schema      = mongoose.Schema;
-const ReplySchema = require('./reply.model').schema;
+// const ReplySchema = require('./reply.model').schema;
 
 const ThreadSchema = new Schema({
-  author: {
+  _author: {
     type: Schema.Types.ObjectId,
     ref: 'User'
   },

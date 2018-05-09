@@ -12,12 +12,12 @@ const passport = require('passport');
 const configure = require('./config/passport.js');
 const cors = require("cors");
 
-mongoose.connect('mongodb://localhost/forum-development');
+mongoose.connect('mongodb://localhost/clickr');
 
 const app = express();
 
 app.use(session({
-  secret: "forum-app",
+  secret: "clickr-app",
   resave: true,
   saveUninitialized: true,
   store: new MongoStore({ mongooseConnection: mongoose.connection })
