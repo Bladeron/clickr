@@ -3,6 +3,6 @@ export interface Threads {
   _author: string,
   title: string
   content: string,
-  replies: Array<string>,
+  // replies: Array<string>,
   date: Date
 }

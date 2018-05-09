@@ -1,0 +1,14 @@
+<p>
+  photo-load works!
+</p>
+
+<a [routerLink]="['']"> Back Home </a>
+
+<form>
+  <fieldset>
+    <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
+  </fieldset>
+  <button (click)="submit()"> submit </button>
+</form>
+
+<p> {{ feedback }} </p>

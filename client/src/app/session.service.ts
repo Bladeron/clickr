@@ -37,7 +37,7 @@ export class SessionService {
   }
 
   login(username, password) {
-    // console.log("Login-service")
+    this.router.navigate([`/home`]);  
     return this.http.post(`${BASEURL}/api/login`, {username,password}, this.options)
       .map(res => res.json())
       .map(user => this.handleUser(user))
@@ -45,7 +45,8 @@ export class SessionService {
   }
 
   logout() {
-    return this.http.post(`${BASEURL}/api/logout`,this.options)
+    this.router.navigate([`/home`]);
+    return this.http.get(`${BASEURL}/api/logout`,this.options)
       .map(() => this.handleUser())
       .catch(this.handleError);
   }

@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { routes } from './routes';
 
+import { FileSelectDirective } from "ng2-file-upload";
 import { AppComponent } from './app.component';
 import { ThreadsService } from './threads.service';
 import { ListThreadsComponent } from './list-threads/list-threads.component';
@@ -13,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { NewThreadComponent } from './new-thread/new-thread.component';
 import { OneThreadComponent } from './one-thread/one-thread.component';
+import { PhotoLoadComponent } from './photo-load/photo-load.component';
 
 
 
@@ -23,7 +25,9 @@ import { OneThreadComponent } from './one-thread/one-thread.component';
     LoginComponent,
     SignupComponent,
     NewThreadComponent,
-    OneThreadComponent
+    OneThreadComponent,
+    PhotoLoadComponent,
+    FileSelectDirective
 ],
   imports: [
     BrowserModule,

@@ -9,6 +9,7 @@
 <div *ngIf="service.user">
   <p>Usuario detectado: {{service.user.username}}</p>
   <a [routerLink]="['/threads/new']">New Thread</a>
+  <a [routerLink]="['/image']">Load a new image</a>
   <button class="btn btn-danger" (click)="service.logout().subscribe()" > Logout </button>
 </div>
 
