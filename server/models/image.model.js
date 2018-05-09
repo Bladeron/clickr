@@ -1,25 +1,26 @@
 const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 
-const picSchema = new Schema({
-  Owner: {
+const PicSchema = new Schema({
+  owner: {
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
-  Data: {
+  data: {
     type: Object,
+    default: {
+      data: "No data"
+    }
   },
-  url: string,
+  url: String,
   date: {
     type: Date,
     default: Date.now
   },
-  location: { 
-    type: { type: String }, 
-    coordinates: [Number] },
+  location: { type: { type: String }, coordinates: [Number]}
 });
 
-picSchema.index({ location: "2dsphere" });
+PicSchema.index({ location: "2dsphere" });
 
-const Reply = mongoose.model('Pic', picSchema);
+const Pic = mongoose.model('Pic', PicSchema);
 module.exports = Pic;
