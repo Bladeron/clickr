@@ -8,9 +8,7 @@ const PicSchema = new Schema({
   },
   data: {
     type: Object,
-    default: {
-      data: "No data"
-    }
+    default: {}
   },
   url: String,
   date: {
