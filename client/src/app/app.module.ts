@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { routes } from './routes';
 
+import { AgmCoreModule } from '@agm/core';
 import { FileSelectDirective } from "ng2-file-upload";
 import { AppComponent } from './app.component';
 import { ThreadsService } from './threads.service';
@@ -15,6 +16,7 @@ import { SignupComponent } from './signup/signup.component';
 import { NewThreadComponent } from './new-thread/new-thread.component';
 import { OneThreadComponent } from './one-thread/one-thread.component';
 import { PhotoLoadComponent } from './photo-load/photo-load.component';
+import { MapComponent } from './map/map.component';
 
 
 
@@ -27,13 +29,17 @@ import { PhotoLoadComponent } from './photo-load/photo-load.component';
     NewThreadComponent,
     OneThreadComponent,
     PhotoLoadComponent,
-    FileSelectDirective
+    FileSelectDirective,
+    MapComponent
 ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     HttpModule,
-    FormsModule
+    FormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'environment.GOOGLE_KEY'
+    })
   ],
   providers: [ThreadsService, SessionService],
   bootstrap: [AppComponent]
