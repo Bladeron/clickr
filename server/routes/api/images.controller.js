@@ -7,6 +7,7 @@ const uploadCloud = require("../../config/multer");
 const upload = require("../../config/local")
 const cloudinary = require("cloudinary");
 
+
 const authRoutes = require('./authentication.controller');
 const thrRoutes = require('./threads.controller');
 
@@ -17,26 +18,20 @@ router.post('/', upload.single('file'), function (req, res) {
     if (error)
       console.log('Error: ' + error.message);
     else {
-      // console.log(exifData.gps.GPSLatitude)
-      // console.log(parseInt(exifData.gps.GPSLatitude))
 
       function ConvertDMSToDD(degrees, minutes, seconds, direction) {
-        var dd = degrees + minutes/60 + seconds/(60*60);
-    
+        var dd = degrees + minutes / 60 + seconds / (60 * 60);
+
         if (direction == "S" || direction == "W") {
-            dd = dd * -1;
+          dd = dd * -1;
         } // Don't do anything for N or E
         return dd;
-    }
-      function ParseDMS(input) {
-        var parts = input.split(/[^\d\w]+/);
-        var lat = ConvertDMSToDD(exifData.gps.GPSLatitude[0], exifData.gps.GPSLatitude[1], exifData.gps.GPSLatitude[2], exifData.gps.GPSLatitudeRef);
-        var lng = ConvertDMSToDD(exifData.gps.GPSLongitude[0], exifData.gps.GPSLongitude[1], exifData.gps.GPSLongitude[2], exifData.gps.GPSLongitudeRef);
       }
+
 
       let location = {
         type: 'Point',
-        coordinates: [ConvertDMSToDD(exifData.gps.GPSLatitude[0], exifData.gps.GPSLatitude[1], exifData.gps.GPSLatitude[2], exifData.gps.GPSLatitudeRef),ConvertDMSToDD(exifData.gps.GPSLongitude[0], exifData.gps.GPSLongitude[1], exifData.gps.GPSLongitude[2], exifData.gps.GPSLongitudeRef)]
+        coordinates: [ConvertDMSToDD(exifData.gps.GPSLatitude[0], exifData.gps.GPSLatitude[1], exifData.gps.GPSLatitude[2], exifData.gps.GPSLatitudeRef), ConvertDMSToDD(exifData.gps.GPSLongitude[0], exifData.gps.GPSLongitude[1], exifData.gps.GPSLongitude[2], exifData.gps.GPSLongitudeRef)]
       }
 
       const image = new Pic({
@@ -49,7 +44,7 @@ router.post('/', upload.single('file'), function (req, res) {
 
       image.save().then(image => {
         cloudinary.uploader.upload(req.file.path, function (result) { console.log(result) })
-        console.log(image)
+        //console.log(image)
         return res.json({
           message: 'New image created!',
           image: image
@@ -58,9 +53,17 @@ router.post('/', upload.single('file'), function (req, res) {
     }
   });
 
+});
 
+router.get('/:id', (req, res, next) => {
+  Pic
+    .findById(req.params.id)
+    .exec((err, image) => {
+      if (err) { return res.status(500).json(err); }
+      if (!image) { return res.status(404).json(err); }
 
-
+      return res.status(200).json(image);
+    });
 });
 
 module.exports = router;
