@@ -23,6 +23,9 @@ router.get('/all', (req, res, next) => {
 
 router.post('/', upload.single('file'), function (req, res) {
 
+  cloudinary.uploader.upload(req.file.path).then(result=>  {
+    console.log("Result:")
+    console.log(result)
   var path = req.file.path;
   new ExifImage({ image: path }, function (error, exifData) {
     if (error)
@@ -47,13 +50,15 @@ router.post('/', upload.single('file'), function (req, res) {
       const image = new Pic({
         owner: req.user.id,
         data: exifData,
-        url: req.file.url,
+        url: result.url,
         location: location
       });
+      console.log("Image:")
+      console.log(image)
 
 
       image.save().then(image => {
-        cloudinary.uploader.upload(req.file.path, function (result) { console.log(result) })
+        // cloudinary.uploader.upload(req.file.path).then(result=>  console.log(result) )
         //console.log(image)
         return res.json({
           message: 'New image created!',
@@ -62,6 +67,9 @@ router.post('/', upload.single('file'), function (req, res) {
       });
     }
   });
+  })
+
+  
 
 });
 
