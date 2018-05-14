@@ -8,11 +8,16 @@ const BASE_URL = 'http://localhost:3000';
 
 @Injectable()
 export class ImagedataService {
-
+  
   constructor(private http: Http) { }
-
+  
   oneImage(id) {
-    return this.http.get(`${BASE_URL}/api/image/${id}`)
+    return this.http.get(`${BASE_URL}/api/images/${id}`)
+      .map((imageData) => imageData.json());
+  }
+
+  getImages(){
+    return this.http.get(`${BASE_URL}/api/images/all`)
       .map((res) => res.json());
   }
 }

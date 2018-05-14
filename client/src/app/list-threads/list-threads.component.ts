@@ -12,7 +12,7 @@ export class ListThreadsComponent implements OnInit {
 
   threads: Array<any>;
 
-  constructor( public retrieveT: ThreadsService,) { }
+  constructor( public retrieveT: ThreadsService) { }
 
   ngOnInit() {
     this.retrieveT.getThread()

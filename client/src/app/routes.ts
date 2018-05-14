@@ -5,7 +5,9 @@ import { SignupComponent } from './signup/signup.component';
 import { NewThreadComponent } from './new-thread/new-thread.component';
 import { OneThreadComponent} from './one-thread/one-thread.component';
 import { PhotoLoadComponent} from './photo-load/photo-load.component';
-import { MapComponent } from './map/map.component'
+import { MapComponent } from './map/map.component';
+import { ListImagesComponent} from './list-images/list-images.component';
+import { OneImageComponent } from './one-image/one-image.component';
 
 
 export const routes: Routes = [
@@ -16,5 +18,8 @@ export const routes: Routes = [
   { path: "threads/new", component: NewThreadComponent },
   { path: "threads/:id", component: OneThreadComponent },
   { path: "image", component: PhotoLoadComponent },
-  { path: "maps", component: MapComponent }
+  { path: "maps", component: MapComponent },
+  { path: "list-images", component: ListImagesComponent },
+  { path: "images/:id", component: OneImageComponent }
+
 ];

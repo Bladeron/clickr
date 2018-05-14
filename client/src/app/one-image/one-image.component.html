@@ -1,0 +1,21 @@
+<p>
+  one-image works!
+</p>
+
+<div *ngIf="imageSingle">
+  <h1>{{imageSingle._id}}</h1>
+  {{imageSingle.data.image.Make}}
+  {{imageSingle.data.image.Model}}
+  <p>
+    Aperture: {{imageSingle.data.exif.FNumber}}
+  </p>
+  <p>
+    ISO: {{imageSingle.data.exif.ISO}}
+  </p>
+  <p>
+    Shutter Speed: {{imageSingle.data.exif.ExposureTime}}
+  </p>
+  <p>
+    Focal length: {{imageSingle.data.exif.FocalLengthIn35mmFormat}} mm
+  </p>
+</div>

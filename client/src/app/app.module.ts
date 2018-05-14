@@ -18,6 +18,9 @@ import { NewThreadComponent } from './new-thread/new-thread.component';
 import { OneThreadComponent } from './one-thread/one-thread.component';
 import { PhotoLoadComponent } from './photo-load/photo-load.component';
 import { MapComponent } from './map/map.component';
+import { OneImageComponent } from './one-image/one-image.component';
+import { ListImagesComponent } from './list-images/list-images.component';
+import { ImagedataService } from './imagedata.service'
 
 @NgModule({
   declarations: [
@@ -29,7 +32,9 @@ import { MapComponent } from './map/map.component';
     OneThreadComponent,
     PhotoLoadComponent,
     FileSelectDirective,
-    MapComponent
+    MapComponent,
+    OneImageComponent,
+    ListImagesComponent
 ],
   imports: [
     BrowserModule,
@@ -40,7 +45,7 @@ import { MapComponent } from './map/map.component';
       apiKey: environment.GOOGLE_KEY
     })
   ],
-  providers: [ThreadsService, SessionService],
+  providers: [ThreadsService, SessionService, ImagedataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

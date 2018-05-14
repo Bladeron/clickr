@@ -1,0 +1,12 @@
+<p>
+  list-images works!
+</p>
+
+<div>
+    <ul>
+      <li *ngFor="let i of images">
+        <h4>{{i._id}} </h4>
+        <a [routerLink]="['/images',i._id]">Ampliar info</a>
+      </li>
+    </ul>
+  </div>

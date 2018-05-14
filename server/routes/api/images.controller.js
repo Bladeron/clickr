@@ -11,6 +11,16 @@ const cloudinary = require("cloudinary");
 const authRoutes = require('./authentication.controller');
 const thrRoutes = require('./threads.controller');
 
+router.get('/all', (req, res, next) => {
+  Pic
+    .find({})
+    .exec( (err, images) => {
+      if (err) { return res.status(500).json(err); }
+
+      return res.status(200).json(images);
+    });
+});
+
 router.post('/', upload.single('file'), function (req, res) {
 
   var path = req.file.path;
@@ -65,5 +75,7 @@ router.get('/:id', (req, res, next) => {
       return res.status(200).json(image);
     });
 });
+
+
 
 module.exports = router;
