@@ -13,7 +13,7 @@
     ISO: {{imageSingle.data.exif.ISO}}
   </p>
   <p>
-    Shutter Speed: {{imageSingle.data.exif.ExposureTime}}
+    Shutter Speed: 1/Math.pow(2^{{imageSingle.data.exif.ExposureTime}})
   </p>
   <p>
     Focal length: {{imageSingle.data.exif.FocalLengthIn35mmFormat}} mm
